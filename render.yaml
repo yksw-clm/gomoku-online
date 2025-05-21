@@ -3,9 +3,7 @@ services:
     name: gomoku-game
     env: node
     plan: free
-    buildCommand: |
-      npm install
-      node build-for-render.js
+    buildCommand: npm run build:render
     startCommand: cd server && node dist/index.js
     healthCheckPath: /api/health
     envVars:

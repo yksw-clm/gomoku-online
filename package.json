@@ -8,7 +8,7 @@
     "setup:server": "cd server && npm install",
     "build:server": "cd server && npm run build",
     "copy:client": "node copy-client.js",
-    "debug:structure": "find . -type d -maxdepth 3 | sort",
+    "debug:structure": "find . -type d -maxdepth 3 | sort || ls -la",
     "build": "npm install && npm run build:client && npm run copy:client && npm run setup:server && npm run build:server",
     "start": "cd server && npm start",
     "build:render": "node build-for-render.js"

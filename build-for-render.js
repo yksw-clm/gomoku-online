@@ -1,3 +1,4 @@
+gomoku\build-for-render.js
 const { execSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
@@ -35,11 +36,9 @@ async function build() {
 
     // クライアントのビルド
     runCommand("cd client && npm install", "Install client dependencies");
-    runCommand(
-      "cd client && npx tsc --noEmit || true",
-      "TypeScript check (ignoring errors)"
-    );
-    runCommand("cd client && npx vite build || true", "Build client with Vite");
+    
+    // TypeScriptのチェックはスキップして直接Viteのビルドを実行
+    runCommand("cd client && npm run build", "Build client with Vite");
 
     // サーバーディレクトリにpublicフォルダがあることを確認
     if (!fs.existsSync("server/public")) {

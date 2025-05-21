@@ -7,9 +7,10 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
-    // TypeScriptチェックを無効にする
+    // TypeScriptの型チェックを完全に無効化
     typescript: {
       transpileOnly: true,
+      noEmit: false,
     },
   },
   server: {
@@ -19,5 +20,11 @@ export default defineConfig({
         ws: true,
       },
     },
+  },
+  // バンドルサイズ最適化
+  esbuild: {
+    legalComments: "none",
+    minify: true,
+    target: ["es2020", "edge88", "firefox78", "chrome87", "safari13"],
   },
 });
