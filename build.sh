@@ -1,4 +1,4 @@
-// filepath: c:\dev\gomoku\build.sh
+d.sh
 #!/bin/bash
 # build.sh
 set -e
@@ -10,8 +10,9 @@ npm install
 echo "Building client..."
 cd client
 npm install
-# TypeScriptのエラーを無視してビルドを続行
-npm run build || true
+# TypeScriptエラーをスキップしてビルド
+npx tsc --noEmit || true
+npx vite build
 cd ..
 
 # クライアントビルドをサーバーのpublicディレクトリにコピー

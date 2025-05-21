@@ -2,16 +2,12 @@ services:
   - type: web
     name: gomoku-game
     env: node
+    plan: free
     buildCommand: |
-      # TypeScriptエラーを無視してビルドを続行
-      set +e
-      bash ./build.sh
-      set -e
-    startCommand: cd server && npm start
+      npm install
+      node build-for-render.js
+    startCommand: cd server && node dist/index.js
     healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
-    autoDeploy: true
